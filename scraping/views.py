@@ -13,7 +13,7 @@ def home_view(request):
             _filter['city__slug'] = city
         if language:
             _filter['language__slug'] = language
-        qs = Vacancy.objects.filter(**_filter)
+        qs = Vacancy.objects.filter(**_filter).select_related('city', 'language')
     return render(request, 'scraping/home.html', {'object_list': qs, 'form': form})
 
 # Create your views here.
