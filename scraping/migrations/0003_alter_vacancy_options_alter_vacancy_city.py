@@ -18,6 +18,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='vacancy',
             name='city',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='vacancies', to='scraping.city', verbose_name='Город'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='vacancies',
+                                    to='scraping.city', verbose_name='Город'),
         ),
     ]

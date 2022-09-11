@@ -18,8 +18,10 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('url_data', jsonfield.fields.JSONField(default=scraping.models.default_urls)),
-                ('city', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='scraping.city', verbose_name='Город')),
-                ('language', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='scraping.language', verbose_name='Язык программирования')),
+                ('city', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
+                                           to='scraping.city', verbose_name='Город')),
+                ('language', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
+                                               to='scraping.language', verbose_name='Язык программирования')),
             ],
             options={
                 'unique_together': {('city', 'language')},

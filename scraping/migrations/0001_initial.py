@@ -45,8 +45,10 @@ class Migration(migrations.Migration):
                 ('company', models.CharField(max_length=250, verbose_name='Компания')),
                 ('description', models.TextField(verbose_name='Описание вакансии')),
                 ('timestamp', models.DateField(auto_now_add=True)),
-                ('city', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='scraping.city', verbose_name='Город')),
-                ('language', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='scraping.language', verbose_name='Язык программирования')),
+                ('city', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='scraping.city',
+                                           verbose_name='Город')),
+                ('language', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='scraping.language',
+                                               verbose_name='Язык программирования')),
             ],
             options={
                 'verbose_name': 'Вакансия',

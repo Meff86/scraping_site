@@ -3,11 +3,15 @@ from django.shortcuts import render
 
 from .forms import FindForm
 from .models import Vacancy
+
+
 def home_view(request):
     form = FindForm()
     return render(request, 'scraping/home.html', {'form': form})
 
 # Create your views here.
+
+
 def list_view(request):
     # print(request.GET)
     form = FindForm()
@@ -20,10 +24,8 @@ def list_view(request):
             _filter['city__slug'] = city
         if language:
             _filter['language__slug'] = language
-
         qs = Vacancy.objects.filter(**_filter).select_related('city', 'language')
         paginator = Paginator(qs, 10)  # Show 10 contacts per page.
-
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
         context['object_list'] = page_obj

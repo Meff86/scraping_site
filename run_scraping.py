@@ -1,5 +1,4 @@
 import asyncio
-import codecs
 import os, sys
 
 from django.contrib.auth import get_user_model
@@ -13,16 +12,17 @@ import django
 django.setup()
 
 
-from scraping.models import City, Vacancy, Language, Error, Url
+from scraping.models import Vacancy, Error, Url
 
 from scraping.parsers import *
 
 User = get_user_model()
 
-parsers = ((hh, 'hh' ),
+parsers = ((hh, 'hh'),
            (habr, 'habr'))
 
 jobs, errors = [], []
+
 def get_settings():
     qs = User.objects.filter(send_email=True).values()
     settings_lst = set((q['city_id'], q['language_id']) for q in qs)
@@ -79,4 +79,3 @@ for job in jobs:
         pass
 if errors:
     er = Error(data=errors).save()
-
